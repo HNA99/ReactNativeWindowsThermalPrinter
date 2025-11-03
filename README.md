@@ -10,7 +10,6 @@ npm install react-native-windows-thermal-printer
 
 ## Usage
 
-
 ```js
 import { multiply } from 'react-native-windows-thermal-printer';
 
@@ -18,7 +17,6 @@ import { multiply } from 'react-native-windows-thermal-printer';
 
 const result = multiply(3, 7);
 ```
-
 
 ## Contributing
 

@@ -3,6 +3,9 @@ import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
   multiply(a: number, b: number): number;
+  getDeviceList(): Promise<Array<string>>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('ReactNativeWindowsThermalPrinter');
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'ReactNativeWindowsThermalPrinter'
+);
