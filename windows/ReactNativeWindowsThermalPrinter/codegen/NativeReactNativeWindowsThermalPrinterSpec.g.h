@@ -19,6 +19,7 @@ struct ReactNativeWindowsThermalPrinterSpec : winrt::Microsoft::ReactNative::Tur
   static constexpr auto methods = std::tuple{
       SyncMethod<double(double, double) noexcept>{0, L"multiply"},
       Method<void(Promise<std::vector<std::string>>) noexcept>{1, L"getDeviceList"},
+      Method<void(std::string, Promise<std::string>) noexcept>{2, L"connectPrinter"},
   };
 
   template <class TModule>
@@ -35,6 +36,11 @@ struct ReactNativeWindowsThermalPrinterSpec : winrt::Microsoft::ReactNative::Tur
           "getDeviceList",
           "    REACT_METHOD(getDeviceList) void getDeviceList(::React::ReactPromise<std::vector<std::string>> &&result) noexcept { /* implementation */ }\n"
           "    REACT_METHOD(getDeviceList) static void getDeviceList(::React::ReactPromise<std::vector<std::string>> &&result) noexcept { /* implementation */ }\n");
+    REACT_SHOW_METHOD_SPEC_ERRORS(
+          2,
+          "connectPrinter",
+          "    REACT_METHOD(connectPrinter) void connectPrinter(std::string deviceId, ::React::ReactPromise<std::string> &&result) noexcept { /* implementation */ }\n"
+          "    REACT_METHOD(connectPrinter) static void connectPrinter(std::string deviceId, ::React::ReactPromise<std::string> &&result) noexcept { /* implementation */ }\n");
   }
 };
 

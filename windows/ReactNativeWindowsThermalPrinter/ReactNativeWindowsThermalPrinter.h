@@ -26,9 +26,11 @@ struct ReactNativeWindowsThermalPrinter
   REACT_SYNC_METHOD(multiply)
   double multiply(double a, double b) noexcept;
 
-  // Async getDeviceList using ReactPromise (not folly)
   REACT_METHOD(getDeviceList)
   winrt::fire_and_forget getDeviceList(React::ReactPromise<std::vector<std::string>> promise) noexcept;
+
+  REACT_METHOD(connectPrinter)
+  winrt::fire_and_forget connectPrinter(std::string deviceId, React::ReactPromise<std::string> promise) noexcept;
 
 private:
   React::ReactContext m_context;
