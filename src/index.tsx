@@ -11,39 +11,35 @@ export interface PrinterImageOptions {
   imageHeight?: number;
 }
 
-export function multiply(a: number, b: number): number {
-  return ReactNativeWindowsThermalPrinter.multiply(a, b);
-}
-
-export function getDeviceList(): Promise<Array<string>> {
-  return ReactNativeWindowsThermalPrinter.getDeviceList();
-}
-
-export function connectPrinter(deviceId: string): Promise<string> {
-  return ReactNativeWindowsThermalPrinter.connectPrinter(deviceId);
-}
-
-export function closeConn(): Promise<void> {
-  return ReactNativeWindowsThermalPrinter.closeConn();
-}
-
-export function printText(text: string): Promise<void> {
-  return ReactNativeWindowsThermalPrinter.printText(text);
-}
-
-export function printBill(text: string): Promise<void> {
-  return ReactNativeWindowsThermalPrinter.printBill(text);
-}
-
-export function printImageBase64(
-  Base64: string,
-  opts?: PrinterImageOptions
-): Promise<void> {
-  return ReactNativeWindowsThermalPrinter.printImageBase64(
-    Base64,
-    opts?.imageWidth,
-    opts?.imageHeight
-  );
+export const WinPrinter = {
+  init(): void {},
+  getDeviceList(): Promise<Array<string>> {
+    return ReactNativeWindowsThermalPrinter.getDeviceList();
+  },
+  connectPrinter(deviceId: string): Promise<string> {
+    return ReactNativeWindowsThermalPrinter.connectPrinter(deviceId);
+  },
+  closeConn(): Promise<void> {
+    return ReactNativeWindowsThermalPrinter.closeConn();
+  },
+  printText(text: string, opts?: any): Promise<void> {
+    return ReactNativeWindowsThermalPrinter.printText(text);
+  },
+  printBill(text: string, opts?: any): Promise<void> {
+    return ReactNativeWindowsThermalPrinter.printBill(text);
+  },
+  printImage(imgUrl: string, opts?: PrinterImageOptions): void {
+    throw new Error("printImage() not implemented yet.");
+  },
+  printImageBase64(Base64: string, opts?: PrinterImageOptions): Promise<void> {
+    return ReactNativeWindowsThermalPrinter.printImageBase64(Base64, opts?.imageWidth, opts?.imageHeight);
+  },
+  printRaw(text: string): void {
+    throw new Error("printRaw() not implemented yet.");
+  },
+  printColumnsText(texts: string[], columnWidth: number[], columnAlignment: any, columnStyle: string[], opts?: any): void {
+    throw new Error("printColumnsText() not implemented yet.");
+  },
 }
 
 export { COMMANDS };
