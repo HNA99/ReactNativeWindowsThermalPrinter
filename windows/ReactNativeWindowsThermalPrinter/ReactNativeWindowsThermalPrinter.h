@@ -27,9 +27,6 @@ namespace winrt::ReactNativeWindowsThermalPrinter
     REACT_INIT(Initialize)
       void Initialize(React::ReactContext const &reactContext) noexcept;
 
-    REACT_SYNC_METHOD(multiply)
-      double multiply(double a, double b) noexcept;
-
     REACT_METHOD(getDeviceList)
       winrt::fire_and_forget getDeviceList(React::ReactPromise<std::vector<std::string>> promise) noexcept;
 

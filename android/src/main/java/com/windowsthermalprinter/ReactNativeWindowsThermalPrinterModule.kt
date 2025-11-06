@@ -11,10 +11,34 @@ class ReactNativeWindowsThermalPrinterModule(reactContext: ReactApplicationConte
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  override fun multiply(a: Double, b: Double): Double {
-    return a * b
+  @ReactMethod
+  fun getDeviceList(promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "getDeviceList is not implemented on Android")
+  }
+
+  @ReactMethod
+  fun connectPrinter(deviceId: String, promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "connectPrinter is not implemented on Android")
+  }
+
+  @ReactMethod
+  fun closeConn(promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "closeConn is not implemented on Android")
+  }
+
+  @ReactMethod
+  fun printText(text: String, promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "printText is not implemented on Android")
+  }
+
+  @ReactMethod
+  fun printBill(text: String, promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "printBill is not implemented on Android")
+  }
+
+  @ReactMethod
+  fun printImageBase64(base64: String, width: Int?, height: Int?, promise: Promise) {
+    promise.reject("E_NOT_IMPLEMENTED", "printImageBase64 is not implemented on Android")
   }
 
   companion object {

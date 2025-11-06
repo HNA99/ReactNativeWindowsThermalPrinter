@@ -21,10 +21,6 @@ namespace winrt::ReactNativeWindowsThermalPrinter
     m_context = reactContext;
   }
 
-  double ReactNativeWindowsThermalPrinter::multiply(double a, double b) noexcept {
-    return a * b;
-  }
-
   winrt::fire_and_forget ReactNativeWindowsThermalPrinter::getDeviceList(
     React::ReactPromise<std::vector<std::string>> promise) noexcept
   {

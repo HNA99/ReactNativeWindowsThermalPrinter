@@ -9,7 +9,6 @@ export interface PrinterOptions {
 }
 
 export interface Spec extends TurboModule {
-  multiply(a: number, b: number): number;
   getDeviceList(): Promise<Array<string>>;
   connectPrinter(deviceId: string): Promise<string>;
   closeConn(): Promise<void>;
