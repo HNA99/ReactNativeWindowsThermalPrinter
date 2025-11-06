@@ -22,13 +22,13 @@ namespace winrt::ReactNativeWindowsThermalPrinter
   }
 
   winrt::fire_and_forget ReactNativeWindowsThermalPrinter::getDeviceList(
-    React::ReactPromise<std::vector<std::string>> promise) noexcept
+    React::ReactPromise<React::JSValueArray> promise) noexcept
   {
     try
     {
       OutputDebugString(L"[ThermalPrinter] getDeviceList called\n");
 
-      std::vector<std::string> printers;
+      React::JSValueArray printers;
 
       hstring selector = PosPrinter::GetDeviceSelector();
       OutputDebugString(L"[ThermalPrinter] Device selector obtained\n");
@@ -44,11 +44,18 @@ namespace winrt::ReactNativeWindowsThermalPrinter
         std::string name = winrt::to_string(device.Name());
         OutputDebugStringA(("[ThermalPrinter] Found printer: " + name + "\n").c_str());
         OutputDebugStringA(("[ThermalPrinter] ID: " + id + "\n").c_str());
-        printers.push_back(id);
+
+        React::JSValueObject obj;
+        obj["device_id"] = React::JSValue{ winrt::to_string(device.Id()) };   // convert hstring → std::string
+        obj["device_name"] = React::JSValue{ winrt::to_string(device.Name()) };       // convert hstring → std::string
+        printers.push_back(std::move(obj));
+        
+        // printers.push_back(id);
       }
 
       OutputDebugString(L"[ThermalPrinter] Resolving promise with printer list\n");
-      promise.Resolve(std::move(printers));
+      promise.Resolve(printers);
+      // promise.Resolve(std::move(printers));
     }
     catch (std::exception const& ex)
     {

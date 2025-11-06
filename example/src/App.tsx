@@ -115,7 +115,7 @@ export default function App() {
                       selectedDevice === dev.device_id && styles.selectedText,
                     ]}
                   >
-                    {dev.device_id}
+                    {dev.device_name}
                   </Text>
                 </Pressable>
               ))

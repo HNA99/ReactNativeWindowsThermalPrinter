@@ -17,7 +17,7 @@ namespace ReactNativeWindowsThermalPrinterCodegen {
 
 struct ReactNativeWindowsThermalPrinterSpec : winrt::Microsoft::ReactNative::TurboModuleSpec {
   static constexpr auto methods = std::tuple{
-      Method<void(Promise<std::vector<std::string>>) noexcept>{0, L"getDeviceList"},
+      Method<void(Promise<::React::JSValueArray>) noexcept>{0, L"getDeviceList"},
       Method<void(std::string, Promise<std::string>) noexcept>{1, L"connectPrinter"},
       Method<void(Promise<void>) noexcept>{2, L"closeConn"},
       Method<void(std::string, Promise<void>) noexcept>{3, L"printText"},
@@ -32,8 +32,8 @@ struct ReactNativeWindowsThermalPrinterSpec : winrt::Microsoft::ReactNative::Tur
     REACT_SHOW_METHOD_SPEC_ERRORS(
           0,
           "getDeviceList",
-          "    REACT_METHOD(getDeviceList) void getDeviceList(::React::ReactPromise<std::vector<std::string>> &&result) noexcept { /* implementation */ }\n"
-          "    REACT_METHOD(getDeviceList) static void getDeviceList(::React::ReactPromise<std::vector<std::string>> &&result) noexcept { /* implementation */ }\n");
+          "    REACT_METHOD(getDeviceList) void getDeviceList(::React::ReactPromise<::React::JSValueArray> &&result) noexcept { /* implementation */ }\n"
+          "    REACT_METHOD(getDeviceList) static void getDeviceList(::React::ReactPromise<::React::JSValueArray> &&result) noexcept { /* implementation */ }\n");
     REACT_SHOW_METHOD_SPEC_ERRORS(
           1,
           "connectPrinter",

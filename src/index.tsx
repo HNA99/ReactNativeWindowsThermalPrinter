@@ -13,6 +13,7 @@ export interface PrinterImageOptions {
 
 export interface IWINPrinter {
   device_id: string;
+  device_name: string;
 }
 
 export const WinPrinter = {
@@ -21,7 +22,8 @@ export const WinPrinter = {
     const list = await ReactNativeWindowsThermalPrinter.getDeviceList();
     return (
       list?.map((item) => ({
-        device_id: item, // store the string from results
+        device_id: item.device_id ?? '', // store the string from results
+        device_name: item.device_name ?? '', // store the string from results
       })) ?? []
     );
   },

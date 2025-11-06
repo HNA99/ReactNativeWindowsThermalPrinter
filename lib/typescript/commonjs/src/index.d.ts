@@ -9,6 +9,7 @@ export interface PrinterImageOptions {
 }
 export interface IWINPrinter {
     device_id: string;
+    device_name: string;
 }
 export declare const WinPrinter: {
     init(): void;
