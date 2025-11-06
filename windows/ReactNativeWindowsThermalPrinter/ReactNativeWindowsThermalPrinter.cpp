@@ -139,7 +139,7 @@ namespace winrt::ReactNativeWindowsThermalPrinter
       if (m_claimedPrinter == nullptr)
       {
         OutputDebugString(L"[ThermalPrinter] Claimed printer not found\n");
-        promise.Reject("Could not find claimed printer");
+        promise.Resolve();
         co_return;
       }
 
