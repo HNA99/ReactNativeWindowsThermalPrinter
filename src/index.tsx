@@ -11,10 +11,19 @@ export interface PrinterImageOptions {
   imageHeight?: number;
 }
 
+export interface IWINPrinter {
+  device_id: string;
+}
+
 export const WinPrinter = {
   init(): void {},
-  getDeviceList(): Promise<Array<string>> {
-    return ReactNativeWindowsThermalPrinter.getDeviceList();
+  async getDeviceList(): Promise<Array<IWINPrinter>> {
+    const list = await ReactNativeWindowsThermalPrinter.getDeviceList();
+    return (
+      list?.map((item) => ({
+        device_id: item, // store the string from results
+      })) ?? []
+    );
   },
   connectPrinter(deviceId: string): Promise<string> {
     return ReactNativeWindowsThermalPrinter.connectPrinter(deviceId);

@@ -7,10 +7,14 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import { COMMANDS, WinPrinter } from 'react-native-windows-thermal-printer';
+import {
+  COMMANDS,
+  WinPrinter,
+  type IWINPrinter,
+} from 'react-native-windows-thermal-printer';
 
 export default function App() {
-  const [devices, setDevices] = useState<string[]>([]);
+  const [devices, setDevices] = useState<IWINPrinter[]>([]);
   const [selectedDevice, setSelectedDevice] = useState<string>('');
   const [isConnected, setIsConnected] = useState<Boolean>(false);
 
@@ -101,17 +105,17 @@ export default function App() {
                   key={index}
                   style={[
                     styles.item,
-                    selectedDevice === dev && styles.selectedItem,
+                    selectedDevice === dev.device_id && styles.selectedItem,
                   ]}
-                  onPress={() => setSelectedDevice(dev)}
+                  onPress={() => setSelectedDevice(dev.device_id)}
                 >
                   <Text
                     style={[
                       styles.itemText,
-                      selectedDevice === dev && styles.selectedText,
+                      selectedDevice === dev.device_id && styles.selectedText,
                     ]}
                   >
-                    {dev}
+                    {dev.device_id}
                   </Text>
                 </Pressable>
               ))
