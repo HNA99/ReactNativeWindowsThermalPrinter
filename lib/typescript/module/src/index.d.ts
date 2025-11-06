@@ -7,9 +7,12 @@ export interface PrinterImageOptions {
     imageWidth?: number;
     imageHeight?: number;
 }
+export interface IWINPrinter {
+    device_id: string;
+}
 export declare const WinPrinter: {
     init(): void;
-    getDeviceList(): Promise<Array<string>>;
+    getDeviceList(): Promise<Array<IWINPrinter>>;
     connectPrinter(deviceId: string): Promise<string>;
     closeConn(): Promise<void>;
     printText(text: string, _opts?: any): Promise<void>;
