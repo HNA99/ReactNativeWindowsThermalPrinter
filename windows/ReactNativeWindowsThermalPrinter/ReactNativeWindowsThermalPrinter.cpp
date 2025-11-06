@@ -415,15 +415,19 @@ namespace winrt::ReactNativeWindowsThermalPrinter
     OutputDebugString(buffer);
 
 
-    if (width.has_value() && height.has_value())
+    if (width.has_value() || height.has_value())
     {
-      wchar_t buf[128];
-      swprintf_s(buf, L"[ThermalPrinter] Scaling requested - Target: %.0f x %.0f\n", *width, *height);
-      OutputDebugString(buf);
+      OutputDebugString(L"[ThermalPrinter] Scaling requested\n");
 
       BitmapTransform transform;
-      transform.ScaledWidth(static_cast<uint32_t>(*width));
-      transform.ScaledHeight(static_cast<uint32_t>(*height));
+
+      if(width.has_value()){
+        transform.ScaledWidth(static_cast<uint32_t>(*width));
+      }
+      
+      if(height.has_value()){
+        transform.ScaledHeight(static_cast<uint32_t>(*height));
+      }
 
       softwareBitmap = co_await decoder.GetSoftwareBitmapAsync(
         BitmapPixelFormat::Bgra8,
